@@ -1,5 +1,6 @@
-HUD / N
+HUD (erstmal original) / N
 Tablet / N
 Ausrauben Shops / N
 Namen ändern / N
 Ausweis / N
+Deathscreen / N
