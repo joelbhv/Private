@@ -28,3 +28,5 @@
 #include "compensate.hpp"
 #include "FuelStat.hpp"
 #include "AltisPhone.hpp"
+#include "dynmarket_changeprice.hpp" //Marktsystem :)
+#include "dynmarket_prices.hpp" //Marktsystem :)
