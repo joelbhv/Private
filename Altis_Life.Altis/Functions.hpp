@@ -131,6 +131,8 @@ class Life_Client_Core {
         class ticketPrompt {};
         class vehInvSearch {};
         class wantedGrab {};
+        class showArrestDialog {};
+		class arrestDialog_Arrest {};
     };
 
     class Dialog_Controls {

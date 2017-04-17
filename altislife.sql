@@ -86,6 +86,7 @@ CREATE TABLE IF NOT EXISTS `players` (
   `cop_stats` varchar(32) NOT NULL DEFAULT '"[100,100,0]"',
   `med_stats` varchar(32) NOT NULL DEFAULT '"[100,100,0]"',
   `arrested` tinyint(1) NOT NULL DEFAULT '0',
+  `jail_time` int(11) NOT NULL DEFAULT '0',
   `adminlevel` enum('0','1','2','3','4','5') NOT NULL DEFAULT '0',
   `donorlevel` enum('0','1','2','3','4','5') NOT NULL DEFAULT '0',
   `blacklist` tinyint(1) NOT NULL DEFAULT '0',
@@ -214,6 +215,8 @@ CREATE TABLE `dynmarket` (
 INSERT INTO `dynmarket` VALUES (1,'[]');
 
 -- --------------------------------------------------------
+
+
 
 
 /*!40101 SET CHARACTER_SET_CLIENT=@OLD_CHARACTER_SET_CLIENT */;
