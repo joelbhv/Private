@@ -215,6 +215,7 @@ class Life_Client_Core {
         class tazeSound {};
         class teleport {};
         class whereAmI {};
+        class seizeObjects {}; 
     };
 
     class Gangs    {
@@ -367,4 +368,15 @@ class Life_Client_Core {
         class vehTakeItem {};
         class vInteractionMenu {};
     };
+
+    class Placeables {
+		file = "core\functions\placeables";
+		 class placeablesInit {};
+ 		class medicPlaceablesInit {};
+ 		class placeablesMenu {};
+ 		class placeablesRemoveAll {};
+ 		class placeablePlace {};
+ 		class placeableCancel {};
+ 		class placeablesPlaceComplete {};
+	};
 };

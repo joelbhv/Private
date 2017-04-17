@@ -14,4 +14,10 @@ switch (playerSide) do {
         life_actions = life_actions + [player addAction[localize "STR_pAct_RobPerson",life_fnc_robAction,"",0,false,false,"",'
         !isNull cursorObject && player distance cursorObject < 3.5 && isPlayer cursorObject && animationState cursorObject == "Incapacitated" && !(cursorObject getVariable["robbed",FALSE]) ']];
     };
+
+    case west: {
+    	//Beschlagnahmen
+    	life_actions = life_actions + [player addAction["Objekte beschlagnahmen",life_fnc_seizeObjects,cursorTarget,0,false,false,"",'(count(nearestObjects [player,["weaponHolder"],5])>0) || (count(nearestObjects [player,["WeaponHolderSimulated"],5])>0)']];
+
+	};
 };

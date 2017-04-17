@@ -30,3 +30,4 @@
 #include "AltisPhone.hpp"
 #include "dynmarket_changeprice.hpp" //Marktsystem :)
 #include "dynmarket_prices.hpp" //Marktsystem :)
+#include "placeables.hpp" //Absperrungen

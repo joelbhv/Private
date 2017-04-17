@@ -56,14 +56,18 @@ if (life_container_active) then {
 
 switch (_code) do {
     //Space key for Jumping
-    case 57: {
-        if (isNil "jumpActionTime") then {jumpActionTime = 0;};
-        if (_shift && {!(animationState player isEqualTo "AovrPercMrunSrasWrflDf")} && {isTouchingGround player} && {stance player isEqualTo "STAND"} && {speed player > 2} && {!life_is_arrested} && {((velocity player) select 2) < 2.5} && {time - jumpActionTime > 1.5}) then {
-            jumpActionTime = time; //Update the time.
-            [player] remoteExec ["life_fnc_jumpFnc",RANY]; //Global execution
-            _handled = true;
-        };
-    };
+case 57: {
+ if (!_shift && life_barrier_active) then {
+ 0 spawn life_fnc_placeablesPlaceComplete;
+ };
+ if (isNil "jumpActionTime") then {jumpActionTime = 0;};
+ if (_shift && {!(animationState player isEqualTo "AovrPercMrunSrasWrflDf")} && {isTouchingGround player} && {stance player isEqualTo "STAND"} && {speed player > 2} && {!life_is_arrested} && {((velocity player) select 2) < 2.5} && {time - jumpActionTime > 1.5}) then {
+ if (life_barrier_active) then { [true] call life_fnc_placeableCancel; };
+ jumpActionTime = time; //Update the time.
+ [player] remoteExec ["life_fnc_jumpFnc",RANY]; //Global execution
+ _handled = true;
+ };
+};
 
     //Surrender (Shift + B)
     case 48: {
@@ -85,6 +89,15 @@ switch (_code) do {
             case civilian: {if (!visibleMap) then {[] spawn life_fnc_civMarkers;}};
         };
     };
+
+    //Ö-Key
+    case 39: {
+ if ((isNull(findDisplay 20000)) && (playerSide in ([west,independent]))) then {
+ 0 spawn life_fnc_placeablesMenu;
+ _handled = true;
+ };
+ _handled = true;
+};
 
     //Holster / recall weapon. (Shift + H)
     case 35: {
@@ -189,6 +202,75 @@ switch (_code) do {
             };
         };
     };
+
+    //ENT-Key
+    case 211: {
+ if ((playerSide in [west,independent]) && ((typeOf cursorTarget) in life_definePlaceables)) then {
+ deleteVehicle cursorTarget;
+ hintSilent "Die Absperrung wurde entfernt";
+ };
+};
+
+
+//ANIMATIONEN
+//Takwondo(Traditional Martial arts in korea)(Shift + Num 1)
+case 79:
+{
+ if(_shift) then {_handled = true;};
+ if ((_shift) && (vehicle player == player)) then
+ {
+ cutText [format["Takwondo!!!"], "PLAIN DOWN"];
+ player playMove "AmovPercMstpSnonWnonDnon_exerciseKata";
+ };
+};
+
+
+
+
+//Kneebend Slow(Shift + Num 2)
+case 80:
+{
+ if(_shift) then {_handled = true;};
+ if ((_shift) && (vehicle player == player)) then
+ {
+ cutText [format["KneeBend Slow baby~"], "PLAIN DOWN"];
+ player playMove "AmovPercMstpSnonWnonDnon_exercisekneeBendA";
+ };
+};
+
+
+
+
+//Kneebend Fast(Shift + Num 3)
+case 81:
+{
+ if(_shift) then {_handled = true;};
+ if ((_shift) && (vehicle player == player)) then
+ {
+ cutText [format["KneeBend more Hard!!!Move!!Move!!"], "PLAIN DOWN"];
+ player playMove "AmovPercMstpSnonWnonDnon_exercisekneeBendB";
+ };
+};
+
+
+
+
+//Pushup(Shift + Num 4)
+case 75:
+{
+ if(_shift) then {_handled = true;};
+ if ((_shift) && (vehicle player == player)) then
+ {
+ cutText [format["Pushup!!!!!!"], "PLAIN DOWN"];
+ player playMove "AmovPercMstpSnonWnonDnon_exercisePushup";
+ };
+};
+
+
+
+
+
+
 
     //F Key
     case 33: {
